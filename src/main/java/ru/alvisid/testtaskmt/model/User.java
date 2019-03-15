@@ -15,7 +15,7 @@ import java.util.Objects;
 /**
  * A user entity.
  *
- * @author evgen glushkov
+ * @author Glushkov Evgen
  * @version 1.0
  * @since 2019.15.03
  */
@@ -157,6 +157,15 @@ public class User {
      */
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    /**
+     * Returns {@code true} if id is null.
+     *
+     * @return {@code true} if id is null.
+     */
+    public boolean isNew() {
+        return Objects.isNull(this.id);
     }
 
     /**
