@@ -20,7 +20,7 @@ import static ru.alvisid.testtaskmt.util.ValidationUtil.*;
  * @author Glushkov Evgen
  * @version 1.0
  * @see UserService
- * @since 2019.15.03
+ * @since 2019.03.15
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -48,7 +48,12 @@ public class UserServiceImpl implements UserService {
     @CacheEvict(value = "users", allEntries = true)
     @Override
     public User create(User user) {
-        Assert.notNull(user, this.getClass().getSimpleName() + " must not be null");
+        Assert.notNull(user, User.class.getSimpleName() + " must not be null");
+
+        if (!user.isNew()) {
+            throw new IllegalArgumentException(user.getClass().getSimpleName() + " must be new (has id = null)!");
+        }
+
         return repository.save(user);
     }
 
@@ -61,7 +66,7 @@ public class UserServiceImpl implements UserService {
     @CacheEvict(value = "users", allEntries = true)
     @Override
     public void update(User user) throws NotFoundException {
-        Assert.notNull(user, this.getClass().getSimpleName() + " must not be null");
+        Assert.notNull(user, User.class.getSimpleName() + " must not be null");
         checkNotFoundWithId(repository.save(user), user.getId());
     }
 

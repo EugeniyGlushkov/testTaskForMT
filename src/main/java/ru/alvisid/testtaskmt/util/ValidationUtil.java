@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
  *
  * @author Glushkov Evgeniy
  * @version 1.0
+ * @since 2019.03.15
  */
 public class ValidationUtil {
 

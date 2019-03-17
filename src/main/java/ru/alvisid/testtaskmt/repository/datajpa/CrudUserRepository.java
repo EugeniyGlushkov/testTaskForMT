@@ -16,7 +16,7 @@ import java.util.Optional;
  *
  * @author Glushkov Evgen
  * @version 1.0
- * @since 2019.15.03
+ * @since 2019.03.15
  */
 @Transactional(readOnly = true)
 public interface CrudUserRepository extends JpaRepository <User, Integer> {

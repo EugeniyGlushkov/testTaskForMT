@@ -21,7 +21,7 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "employees", uniqueConstraints =
+@Table(name = "users", uniqueConstraints =
 @UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")
 )
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -50,7 +50,6 @@ public class User {
      */
     @Column(name = "email", nullable = false, unique = true)
     @NotBlank
-    @Size(max = 100)
     @Email
     private String email;
 
@@ -173,6 +172,7 @@ public class User {
      *
      * @see User#User(String, String, String, LocalDate)
      * @see User#User(Integer, String, String, String, LocalDate)
+     * @see User#User(User)
      */
     public User() {
     }
@@ -187,6 +187,7 @@ public class User {
      * @param birthDate the specified user's date of birth.
      * @see User#User()
      * @see User#User(Integer, String, String, String, LocalDate)
+     * @see User#User(User)
      */
     public User(String name, String email, String password, LocalDate birthDate) {
         this(null, name, email, password, birthDate);
@@ -203,6 +204,7 @@ public class User {
      * @param birthDate the specified user's date of birth.
      * @see User#User()
      * @see User#User(String, String, String, LocalDate)
+     * @see User#User(User)
      */
     public User(Integer id, String name, String email, String password, LocalDate birthDate) {
         this.id = id;
@@ -210,6 +212,23 @@ public class User {
         this.email = email;
         this.password = password;
         this.birthDate = birthDate;
+    }
+
+    /**
+     * Constructs new object which is copy of the specified object.
+     * new object is equals to specified object.
+     *
+     * @param user the specified object to copying.
+     * @see User#User()
+     * @see User#User(String, String, String, LocalDate)
+     * @see User#User(Integer, String, String, String, LocalDate)
+     */
+    public User(User user) {
+        this(user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getBirthDate());
     }
 
     /**

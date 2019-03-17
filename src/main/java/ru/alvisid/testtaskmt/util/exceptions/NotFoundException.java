@@ -5,7 +5,7 @@ package ru.alvisid.testtaskmt.util.exceptions;
  *
  * @author Glushkov Evgen
  * @version 1.0
- * @since 2019.15.03
+ * @since 2019.03.15
  */
 public class NotFoundException extends RuntimeException {
     /**

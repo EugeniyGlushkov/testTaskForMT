@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="test-task-for-mt" />
         <module name="testTaskForMT" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="test-task-for-mt" target="9" />
+    </bytecodeTargetLevel>
   </component>
 </project>
