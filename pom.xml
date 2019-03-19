@@ -64,6 +64,10 @@
         <!-- Tests -->
         <junit.version>4.12</junit.version>
         <assertj.version>3.11.1</assertj.version>
+
+        <!-- Jackson JSON Mapper -->
+        <jackson.version>1.9.13</jackson.version>
+        <jackson.databind>2.9.8</jackson.databind>
     </properties>
 
     <dependencies>
@@ -176,6 +180,35 @@
             <artifactId>jul-to-slf4j</artifactId>
             <version>1.7.25</version>
             <scope>test</scope>
+        </dependency>
+
+        <!--Web-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Jackson JSON Mapper -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind}</version>
         </dependency>
     </dependencies>
 </project>
