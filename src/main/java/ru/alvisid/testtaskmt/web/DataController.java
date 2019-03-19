@@ -17,6 +17,7 @@ public class DataController {
         this.service = service;
     }
 
+
     @RequestMapping("user/{id}")
     public @ResponseBody
     User user(@PathVariable int id) {

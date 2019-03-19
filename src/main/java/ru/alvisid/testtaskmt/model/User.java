@@ -1,8 +1,14 @@
 package ru.alvisid.testtaskmt.model;
 
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -11,6 +17,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Objects;
+
+import ru.alvisid.testtaskmt.util.dateutil.LocalDateDeserializer;
+import ru.alvisid.testtaskmt.util.dateutil.LocalDateSerializer;
 
 /**
  * A user entity.
@@ -64,6 +73,9 @@ public class User {
     /**
      * The user's day of birth.
      */
+    //@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     @Column(name = "birth_date", nullable = false)
     @NotNull
     private LocalDate birthDate;
@@ -100,6 +112,7 @@ public class User {
      *
      * @return the user's password.
      */
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -163,6 +176,7 @@ public class User {
      *
      * @return {@code true} if id is null.
      */
+    @JsonIgnore
     public boolean isNew() {
         return Objects.isNull(this.id);
     }
